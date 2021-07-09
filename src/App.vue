@@ -8,7 +8,8 @@
     <router-link to="/watch">Watch</router-link><br />
     <router-link to="/nested">Nested</router-link> |
     <router-link to="/childComponent">ChildComponent</router-link> |
-    <router-link to="/slotUseModalLayout">SlotUseModalLayout</router-link>
+    <router-link to="/slotUseModalLayout">SlotUseModalLayout</router-link><br />
+    <router-link to="/compositionAPI">CompositionAPI</router-link> |
   </div>
   <router-view />
 </template>
