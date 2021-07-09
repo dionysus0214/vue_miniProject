@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
-    <!-- <router-link to="/">Home</router-link> | -->
-    <!-- <router-link to="/about">About</router-link> | -->
+    <!-- <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> | -->
     <router-link to="/databindingInput">Data Binding Input</router-link> |
     <router-link to="/databindingList">Data Binding List</router-link> |
     <router-link to="/computed">Computed</router-link> |
