@@ -8,6 +8,7 @@ import NestedComponent from '../views/NestedComponent.vue'
 import ChildComponent from '../views/ChildComponent.vue'
 import SlotUseModalLayout from '../views/SlotUseModalLayout.vue'
 import CompositionAPI from '../views/CompositionAPI.vue'
+import Login from '../views/Login.vue'
 
 const routes = [
   {
@@ -57,12 +58,16 @@ const routes = [
     path: '/slotUseModalLayout',
     name: 'SlotUseModalLayout',
     component: SlotUseModalLayout
-  }
-  ,
+  },
   {
     path: '/compositionAPI',
     name: 'CompositionAPI',
     component: CompositionAPI
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 
