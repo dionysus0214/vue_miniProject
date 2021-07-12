@@ -4,7 +4,6 @@ import DataBindingInput from '../views/DataBindingInput.vue'
 import DataBindingList from '../views/DataBindingList.vue'
 import Computed from '../views/Computed.vue'
 import Watch from '../views/Watch.vue'
-import NestedComponent from '../views/NestedComponent.vue'
 import ChildComponent from '../views/ChildComponent.vue'
 import SlotUseModalLayout from '../views/SlotUseModalLayout.vue'
 import CompositionAPI from '../views/CompositionAPI.vue'
@@ -42,11 +41,6 @@ const routes = [
     path: '/watch',
     name: 'Watch',
     component: Watch
-  },
-  {
-    path: '/nested',
-    name: 'Nested',
-    component: NestedComponent
   },
   {
     path: '/childComponent',
