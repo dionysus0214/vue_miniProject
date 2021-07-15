@@ -5,7 +5,7 @@
       class="new-todo"
       autofocus
       autocomplete="off"
-      placeholder="Whar needs to be done?"
+      placeholder="What needs to be done?"
       v-model="text"
       @keypress="handelTodo"
     />
