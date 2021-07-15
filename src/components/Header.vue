@@ -1,15 +1,47 @@
 <template>
-  <div>Header Component</div>
+  <header class="header">
+    <h1>todos</h1>
+    <input
+      class="new-todo"
+      autofocus
+      autocomplete="off"
+      placeholder="Whar needs to be done?"
+      v-model="text"
+      @keypress="handelTodo"
+    />
+  </header>
 </template>
 
 <script>
-  export default {};
+export default {
+  data() {
+    return {
+      text: ""
+    }
+  },
+  methods: {
+    handelTodo({ keyCode }) {
+      const { text } = this;
+      if(keyCode === 13 & text !== "") {
+        this.$emit("insertTodo", text);
+        this.text = "";
+      }
+    }
+  }
+}
 </script>
 
-<style scoped>
-div {
-  position: sticky;
-  height: 50px;
-  border-bottom: 1px solid #ebebeb;
+<style>
+h1 {
+  position: absolute;
+  top: -155px;
+  width: 100%;
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(175, 47, 47, 0.15);
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
 </style>
