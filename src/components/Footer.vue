@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .footer {
   color: #777;
   padding: 10px 15px;
