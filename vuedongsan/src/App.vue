@@ -10,36 +10,21 @@
     </div>
   </div>
   <div>
-    <img src="./assets/room0.jpg" class="room-img" />
-    <h4 @click="modal = true">{{ products[0] }}</h4>
-    <p>{{ prices[0] }}</p>
-    <button @click="count[0]++">허위매물신고</button>
-    <span>신고수: {{ count[0] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room1.jpg" class="room-img" />
-    <h4>{{ products[1] }}</h4>
-    <p>{{ prices[1] }}</p>
-    <button @click="count[1]++">허위매물신고</button>
-    <span>신고수: {{ count[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img" />
-    <h4>{{ products[2] }}</h4>
-    <p>{{ prices[2] }}</p>
-    <button @click="count[2]++">허위매물신고</button>
-    <span>신고수: {{ count[2] }}</span>
+    <img :src="products[0].image" class="room-img" />
+    <h4>{{ products[0].title }}</h4>
+    <p>{{ products[0].price }}원</p>
   </div>
 </template>
 
 <script>
+import data from './data.js';
+
 export default {
   name: 'App',
   data() {
     return {
+      products: data,
       menus: ['Home', 'Shop', 'About'],
-      products: ['역삼동 원룸', '천호동 원룸', '서초동 원룸'],
-      prices: ['50만원', '40만원', '70만원'],
       count: [0, 0, 0],
       modal: false,
     }
