@@ -4,15 +4,16 @@
   </div>
   <div v-if="modal == true" class="black-bg">
     <div class="white-bg">
-      <h4>상세페이지</h4>
-      <p>상세페이지 내용</p>
+      <h4>{{ products[isClicked].title }}</h4>
+      <p>{{ products[isClicked].content }}</p>
+      <p>{{ products[isClicked].price }}원</p>
       <button @click="modal = false">닫기</button>
     </div>
   </div>
-  <div>
-    <img :src="products[0].image" class="room-img" />
-    <h4>{{ products[0].title }}</h4>
-    <p>{{ products[0].price }}원</p>
+  <div v-for="(product, i) in products" :key="i">
+    <img :src="products[i].image" class="room-img" />
+    <h4 @click="modal = true; isClicked = i">{{ products[i].title }}</h4>
+    <p>{{ products[i].price }}원</p>
   </div>
 </template>
 
@@ -27,6 +28,7 @@ export default {
       menus: ['Home', 'Shop', 'About'],
       count: [0, 0, 0],
       modal: false,
+      isClicked: 0,
     }
   },
   components: {
