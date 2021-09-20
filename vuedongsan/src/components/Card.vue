@@ -1,7 +1,7 @@
 <template>
   <div>
     <img :src="product.image" class="room-img" />
-    <h4>{{ product.title }}</h4>
+    <h4 @click="openModal">{{ product.title }}</h4>
     <p>{{ product.price }}원</p>
   </div>
 </template>
@@ -11,6 +11,11 @@ export default {
   name: 'Card',
   props: {
     product: Object,
+  },
+  methods: {
+    openModal() {
+      this.$emit('openModal', this.product.id);
+    }
   }
 }
 </script>

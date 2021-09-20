@@ -4,11 +4,13 @@
   </div>
   <Discount />
   <Modal
+    @closeModal="modal = false"
     :products="products"
     :isClicked="isClicked"
     :modal="modal"
   />
   <Card
+    @openModal="modal = true; isClicked = i"
     v-for="(product, i) in products"
     :key="i"
     :product="products[i]"

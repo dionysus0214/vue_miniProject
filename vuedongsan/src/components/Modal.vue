@@ -4,10 +4,11 @@
       <img :src="products[isClicked].image" style="width: 50%" />
       <h4>{{ products[isClicked].title }}</h4>
       <p>{{ products[isClicked].content }}</p>
-      <p>{{ products[isClicked].price }}원</p>
+      <input v-model.number="month" />
+      <p>{{ month }}개월 선택함: {{ products[isClicked].price * month }}원</p>
       <!-- <button @click="modal = false">닫기</button>
       props는 read-only임 받아온 거 수정 불가 -->
-      <button @click="!modal">닫기</button>
+      <button @click="closeModal">닫기</button>
     </div>
   </div>
 </template>
@@ -15,10 +16,20 @@
 <script>
 export default {
   name: 'Modal',
+  data() {
+    return {
+      month: 1,
+    }
+  },
   props: {
     products: Object,
     isClicked: Number,
     modal: Boolean,
+  },
+  methods: {
+    closeModal() {
+      this.$emit('closeModal');
+    }
   }
 }
 </script>
