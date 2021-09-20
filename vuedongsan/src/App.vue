@@ -2,23 +2,24 @@
   <div class="menu">
     <a v-for="menu in menus" :key="menu">{{ menu }}</a>
   </div>
-  <div v-if="modal == true" class="black-bg">
-    <div class="white-bg">
-      <h4>{{ products[isClicked].title }}</h4>
-      <p>{{ products[isClicked].content }}</p>
-      <p>{{ products[isClicked].price }}원</p>
-      <button @click="modal = false">닫기</button>
-    </div>
-  </div>
-  <div v-for="(product, i) in products" :key="i">
-    <img :src="products[i].image" class="room-img" />
-    <h4 @click="modal = true; isClicked = i">{{ products[i].title }}</h4>
-    <p>{{ products[i].price }}원</p>
-  </div>
+  <Discount />
+  <Modal
+    :products="products"
+    :isClicked="isClicked"
+    :modal="modal"
+  />
+  <Card
+    v-for="(product, i) in products"
+    :key="i"
+    :product="products[i]"
+  />
 </template>
 
 <script>
 import data from './data.js';
+import Discount from './components/Discount.vue';
+import Modal from './components/Modal.vue';
+import Card from './components/Card.vue';
 
 export default {
   name: 'App',
@@ -27,11 +28,14 @@ export default {
       products: data,
       menus: ['Home', 'Shop', 'About'],
       count: [0, 0, 0],
-      modal: false,
       isClicked: 0,
+      modal: false,
     }
   },
   components: {
+    Discount,
+    Modal,
+    Card,
   }
 }
 </script>
@@ -54,21 +58,6 @@ div {
   box-sizing: border-box;
 }
 
-.black-bg {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  padding: 20px;
-}
-
-.white-bg {
-  width: 100%;
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-}
-
 .menu {
   background: darkslateblue;
   padding: 15px;
@@ -78,11 +67,6 @@ div {
 .menu a {
   color: white;
   padding: 10px;
-}
-
-.room-img {
-  width: 100%;
-  margin-top: 40px;
 }
 </style>
 
