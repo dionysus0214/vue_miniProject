@@ -4,7 +4,7 @@
       <img :src="products[isClicked].image" style="width: 50%" />
       <h4>{{ products[isClicked].title }}</h4>
       <p>{{ products[isClicked].content }}</p>
-      <input v-model.number="month" />
+      <input v-model="month" />
       <p>{{ month }}개월 선택함: {{ products[isClicked].price * month }}원</p>
       <!-- <button @click="modal = false">닫기</button>
       props는 read-only임 받아온 거 수정 불가 -->
@@ -19,6 +19,14 @@ export default {
   data() {
     return {
       month: 1,
+    }
+  },
+  watch: { // 데이터 감시하려면 vatch: { 감시할데이터(){} }
+    month(a) {
+      if(isNaN(a) == true) {
+        alert('문자 입력 금지');
+        this.month = 1;
+      }
     }
   },
   props: {

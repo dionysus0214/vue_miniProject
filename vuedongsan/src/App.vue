@@ -3,12 +3,15 @@
     <a v-for="menu in menus" :key="menu">{{ menu }}</a>
   </div>
   <Discount />
-  <Modal
-    @closeModal="modal = false"
-    :products="products"
-    :isClicked="isClicked"
-    :modal="modal"
-  />
+  <transition name="fade">
+  <!-- class명을 조건부로 넣으려면 { 클래스명 : 조건 } -->
+    <Modal
+      @closeModal="modal = false"
+      :products="products"
+      :isClicked="isClicked"
+      :modal="modal"
+    />
+  </transition>
   <Card
     @openModal="modal = true; isClicked = i"
     v-for="(product, i) in products"
@@ -43,17 +46,9 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
 body {
   margin: 0;
+  text-align: center;
 }
 
 div {
@@ -69,6 +64,30 @@ div {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 1s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 1s;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
 
