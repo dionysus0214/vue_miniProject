@@ -38,6 +38,11 @@ export default {
     closeModal() {
       this.$emit('closeModal');
     }
+  },
+  beforeUpdate() {
+    if(this.month == 2) {
+      alert('2개월은 너무 짧음');
+    }
   }
 }
 </script>

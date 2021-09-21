@@ -2,7 +2,14 @@
   <div class="menu">
     <a v-for="menu in menus" :key="menu">{{ menu }}</a>
   </div>
-  <Discount />
+  <Discount
+    v-if="showDiscount == true"
+    :discount = "discount"
+  />
+
+  <button @click="sortingPrice">가격순정렬</button>
+  <button @click="back">되돌리기</button>
+
   <transition name="fade">
   <!-- class명을 조건부로 넣으려면 { 클래스명 : 조건 } -->
     <Modal
@@ -12,6 +19,7 @@
       :modal="modal"
     />
   </transition>
+
   <Card
     @openModal="modal = true; isClicked = i"
     v-for="(product, i) in products"
@@ -31,11 +39,36 @@ export default {
   data() {
     return {
       products: data,
+      productsOriginal: [...data],
+      // array, object 데이터의 각각 별개의 사본을 만들려면 [...array]
       menus: ['Home', 'Shop', 'About'],
       count: [0, 0, 0],
+      discount: 20,
+      showDiscount: true,
       isClicked: 0,
       modal: false,
     }
+  },
+  methods: {
+    sortingPrice() {
+      this.products.sort(function(a, b) {
+        return a.price - b.price;
+      });
+    },
+    back() {
+      this.products = [...this.productsOriginal];
+    }
+    // sort()는 원본 변형
+    // map(), filter()는 원본 보존
+  },
+  mounted() {
+    setInterval(() => {
+      if(this.discount > 0) {
+        this.discount--;
+      } else {
+        this.showDiscount = false;
+      }
+    }, 1000);
   },
   components: {
     Discount,
