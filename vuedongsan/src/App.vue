@@ -11,7 +11,8 @@
   <button @click="back">되돌리기</button>
 
   <transition name="fade">
-  <!-- class명을 조건부로 넣으려면 { 클래스명 : 조건 } -->
+  <!-- class명을 조건부로 넣으려면 { 클래스명 : 조건 }
+  <div :class="{ enimate : true }"></div> -->
     <Modal
       @closeModal="modal = false"
       :products="products"
@@ -37,6 +38,8 @@ import Card from './components/Card.vue';
 export default {
   name: 'App',
   data() {
+    // 데이터를 사용하는 컴포넌트들 중 최상위 컴포넌트에 데이터를 만들어 놓는 게 좋음
+    // 데이터는 위로 전송하는 게 복잡하고 추적이 어렵기 때문
     return {
       products: data,
       productsOriginal: [...data],
@@ -62,6 +65,10 @@ export default {
     // map(), filter()는 원본 보존
   },
   mounted() {
+    // create는 데이터 생성, mount는 index.html 파일에 장착
+    // 데이터가 바뀌어서 컴포넌트가 재렌더링될 때는 update
+    // 다른 페이지로 이동하는 등 컴포넌트가 삭제될 때는 unmount
+    // 서버에서 데이터 가져올 경우 주로 created(), mounted()에 작성
     setInterval(() => {
       if(this.discount > 0) {
         this.discount--;
