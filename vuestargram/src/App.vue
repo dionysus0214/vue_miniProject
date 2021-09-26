@@ -9,7 +9,9 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container />
+  <Container
+    :post="post"
+  />
 
   <div class="footer">
     <ul class="footer-button-plus">
