@@ -11,6 +11,7 @@
 
   <Container
     :post="post"
+    :step="step"
   />
   <button @click="more">더보기</button>
 
@@ -19,7 +20,14 @@
       <input type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
- </div>
+  </div>
+
+  <!-- <div v-if="step == 0">내용0</div>
+  <div v-if="step == 1">내용1</div>
+  <div v-if="step == 2">내용2</div>
+  <button @click="step = 0">버튼0</button>
+  <button @click="step = 1">버튼1</button>
+  <button @click="step = 2">버튼2</button> -->
 </template>
 
 <script>
@@ -33,6 +41,7 @@ export default {
     return {
       post: data,
       seeMore: 0,
+      step: 0,
     }
   },
   components: {
@@ -41,7 +50,7 @@ export default {
   methods: {
     more() {
       axios.get(`https://codingapple1.github.io/vue/more${this.seeMore}.json`)
-      .then((result) => {
+      .then((result) => { // GET 요청으로 가져온 데이터는 result 파라미터에 담겨있음
         this.post.push(result.data);
         this.seeMore++;
       })
