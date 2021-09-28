@@ -4,7 +4,8 @@
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -12,12 +13,13 @@
   <Container
     :post="post"
     :step="step"
+    :image="image"
   />
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input @change="upload" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -42,6 +44,7 @@ export default {
       post: data,
       seeMore: 0,
       step: 0,
+      image: '',
     }
   },
   components: {
@@ -54,6 +57,28 @@ export default {
         this.post.push(result.data);
         this.seeMore++;
       })
+    },
+    upload(e) {
+      let file = e.target.files;
+      console.log(file[0].type);
+      let url = URL.createObjectURL(file[0]);
+      console.log(url);
+      this.image = url;
+      this.step++;
+    },
+    publish() {
+      let myPost = {
+        name: "Kim Ji Eun",
+        userImage: "https://placeimg.com/200/200/people",
+        postImage: "",
+        likes: 75,
+        date: "Feb 14",
+        liked: false,
+        content: "ㅎㅇㅎㅇㅎㅇ",
+        filter: "clarendon"
+      };
+      this.post.unshift(myPost); // unshift()는 array에 데이터 하나 더 추가하는 것
+      this.step = 0;
     }
   }
 }
