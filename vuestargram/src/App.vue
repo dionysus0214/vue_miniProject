@@ -14,6 +14,7 @@
     :post="post"
     :step="step"
     :image="image"
+    @write="content = $event"
   />
   <button @click="more">더보기</button>
 
@@ -44,6 +45,7 @@ export default {
       post: data,
       seeMore: 0,
       step: 0,
+      content: '',
       image: '',
     }
   },
@@ -70,11 +72,11 @@ export default {
       let myPost = {
         name: "Kim Ji Eun",
         userImage: "https://placeimg.com/200/200/people",
-        postImage: "",
+        postImage: this.image,
         likes: 75,
         date: "Feb 14",
         liked: false,
-        content: "ㅎㅇㅎㅇㅎㅇ",
+        content: this.content,
         filter: "clarendon"
       };
       this.post.unshift(myPost); // unshift()는 array에 데이터 하나 더 추가하는 것
