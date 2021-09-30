@@ -10,7 +10,11 @@
 
     <!-- 필터 선택 페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image" :style="`background-image:url(${image})`"></div>
+      <div 
+        :class="selectedFilter"
+        class="upload-image"
+        :style="`background-image:url(${image})`"
+      ></div>
       <div class="filters">
         <div class="filters">
           <FilterBox
@@ -19,7 +23,7 @@
             v-for="filter in filters"
             :key="filter"
           >
-            {{ filter }}
+            <span>{{ filter }}</span>
           </FilterBox>
         </div>
       </div>
@@ -27,7 +31,11 @@
 
     <!-- 글 작성 페이지 -->
     <div v-if="step == 2">
-      <div class="upload-image" :style="`background-image:url(${image})`"></div>
+      <div
+        :class="selectedFilter"
+        class="upload-image"
+        :style="`background-image:url(${image})`"
+      ></div>
       <div class="write">
         <textarea @input="$emit('write', $event.target.value)" class="write-box">write!</textarea>
       </div>
@@ -45,6 +53,7 @@ export default {
       filters: [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
       "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
       "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+      selectedFilter: '',
     }
   },
   components: {
@@ -55,6 +64,11 @@ export default {
     post: Array,
     step: Number,
     image: String,
+  },
+  mounted() {
+    this.emitter.on('isClicked', (a) => {
+      this.selectedFilter = a;
+    })
   }
 }
 </script>

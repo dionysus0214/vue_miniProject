@@ -47,10 +47,16 @@ export default {
       step: 0,
       content: '',
       image: '',
+      selectedFilter: '',
     }
   },
   components: {
     Container,
+  },
+  mounted() {
+    this.emitter.on('isClicked', (a) => {
+      this.selectedFilter = a;
+    })
   },
   methods: {
     more() {
@@ -77,7 +83,7 @@ export default {
         date: "Feb 14",
         liked: false,
         content: this.content,
-        filter: "clarendon"
+        filter: this.selectedFilter,
       };
       this.post.unshift(myPost); // unshift()는 array에 데이터 하나 더 추가하는 것
       this.step = 0;
