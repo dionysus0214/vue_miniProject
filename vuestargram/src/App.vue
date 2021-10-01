@@ -9,7 +9,7 @@
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
-  
+
   <Container
     :post="post"
     :step="step"
