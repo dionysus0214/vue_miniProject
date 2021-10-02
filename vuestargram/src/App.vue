@@ -10,6 +10,8 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <button @click="$store.dispatch('getData')">더보기</button>
+  <p>{{ likes }} {{ more }}</p>
   <Container
     :post="post"
     :step="step"
@@ -30,6 +32,7 @@
 import data from './data.js'
 import Container from './components/Container.vue'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
@@ -50,6 +53,9 @@ export default {
     this.emitter.on('isClicked', (a) => {
       this.selectedFilter = a;
     })
+  },
+  computed: {
+    ...mapState(['likes', 'more'])
   },
   methods: {
     more() {
