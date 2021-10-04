@@ -10,21 +10,23 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <button @click="$store.dispatch('getData')">더보기</button>
-  <p>{{ likes }} {{ more }}</p>
+  <!-- <button @click="$store.dispatch('getData')">더보기</button>
+  <p>{{ likes }} {{ more }}</p> -->
   <Container
     :post="post"
     :step="step"
     :image="image"
     @write="content = $event"
   />
-  <button @click="more">더보기</button>
 
-  <div class="footer">
-    <ul class="footer-button-plus">
-      <input @change="upload" type="file" id="file" class="inputfile" />
-      <label for="file" class="input-plus">+</label>
-    </ul>
+  <div v-if="step == 0">
+    <button @click="more">더보기</button>
+    <div class="footer">
+      <ul class="footer-button-plus">
+        <input @change="upload" type="file" id="file" class="inputfile" />
+        <label for="file" class="input-plus">+</label>
+      </ul>
+    </div>
   </div>
 </template>
 
