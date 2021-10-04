@@ -21,17 +21,19 @@
 
 <script>
 import { onMounted, ref } from 'vue'
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   name: 'mypage',
   setup() {
-    let follower = ref([]);
+    let follower = ref([]); 
+    // let 데이터이름 = ref(데이터) 안에 데이터를 저장하지 않으면 데이터 변경시 실시간 재렌더링이 안 됨
+    // return {데이터이름} 해줘야 HTML에서 {{데이터이름}} 이렇게 사용 가능
     let followerOriginal = ref([]);
 
     onMounted(() => {
       axios.get('/follower.json').then((a) => {
-        follower.value = a.data;
+        follower.value = a.data; // .value로 object 안의 데이터를 수정해줘야 함
         followerOriginal.value = [...a.data];
       })
     })
@@ -50,7 +52,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

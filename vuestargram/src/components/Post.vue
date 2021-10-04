@@ -13,6 +13,10 @@
       :style="{ backgroundImage: `url(${post.postImage})` }"
       @click="$store.commit('plusLikes')"
     ></div>
+    <!-- vue에서 style 속성 데이터 바인딩 시 style=""에 object 데이터 형태로 css 속성 넣을 수 있음
+        데이터 자료형이 object이므로 css 속성명은 - 대시기호를 사용할 수 없음(CamelCase 사용)
+        자바스크립트에서 문자 중간에 변수를 넣으려면 `문자${변수}문자`
+    -->
     <div class="post-content">
       <p>{{ $store.state.likes }} Likes</p>
       <p><strong>{{ post.name }}</strong> {{ post.content }}</p>

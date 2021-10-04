@@ -68,9 +68,9 @@ export default {
       })
     },
     upload(e) {
-      let file = e.target.files;
+      let file = e.target.files; // 업로드한 파일을 리스트로 알려줌
       console.log(file[0].type);
-      let url = URL.createObjectURL(file[0]);
+      let url = URL.createObjectURL(file[0]); // URL.createObjectURL()에 업로드한 파일을 담으면 가상의 url을 하나 생성
       console.log(url);
       this.image = url;
       this.step++;

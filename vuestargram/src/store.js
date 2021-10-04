@@ -10,6 +10,8 @@ const store = createStore({
     }
   },
   mutations: {
+    // state 수정은 store.js에서만 가능하게 코드를 짜야 -> vuex는 상태 관리 라이브러리
+    // mutations에 데이터 수정방법 정의
     setMore(state, data) {
       state.more = data;
     },
@@ -24,6 +26,8 @@ const store = createStore({
     }
   },
   actions: {
+    // state를 수정하는 mutations는 순수하게 state 변경만 하는 함수 넣고
+    // ajax처럼 비동기식 처리를 지원하는 코드는 actions에 넣는 게 좋음
     getData(context) {
       axios.get('https://codingapple1.github.io/vue/more0.json')
         .then((a) => {
