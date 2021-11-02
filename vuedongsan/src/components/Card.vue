@@ -25,6 +25,9 @@ export default {
   width: 90%;
   margin-top: 40px;
 }
+h4 {
+  cursor: pointer;
+}
 </style>
 
 // custom event 문법을 이용해 부모가 가진 데이터를 변경하는 방법

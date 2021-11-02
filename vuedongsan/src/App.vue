@@ -1,5 +1,9 @@
 <template>
   <div class="menu">
+    <!-- vue 반복문 특징: array, object 넣기 가능(자료 안의 데이터 갯수만큼 반복됨, 작명한 변수는 데이터 안의 자료가 됨)
+      <a v-for="(작명, i) in 몇회" :key="i"></a>
+      :key=""는 반복문 돌린 요소를 컴퓨터가 구분하기 위해 씀
+      변수 작명 2개 까지 가능(왼쪽은 array 내 데이터, 오른쪽은 1씩 증가하는 변수) -->
     <a v-for="menu in menus" :key="menu">{{ menu }}</a>
   </div>
   <Discount
@@ -12,7 +16,7 @@
 
   <transition name="fade">
   <!-- class명을 조건부로 넣으려면 { 클래스명 : 조건 }
-  <div :class="{ enimate : true }"></div> -->
+    <div :class="{ enimate : true }"></div> -->
     <Modal
       @closeModal="modal = false"
       :products="products"
