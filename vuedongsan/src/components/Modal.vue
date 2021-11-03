@@ -38,6 +38,7 @@ export default {
     }
   },
   props: {
+    // 자식 컴포넌트가 부모가 갖고 있는 데이터 쓰려면 props로 데이터를 전송해야
     products: Object,
     isClicked: Number,
     modal: Boolean,
