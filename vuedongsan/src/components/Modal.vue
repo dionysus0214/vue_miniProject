@@ -4,7 +4,8 @@
       <img :src="products[isClicked].image" style="width: 50%" />
       <h4>{{ products[isClicked].title }}</h4>
       <p>{{ products[isClicked].content }}</p>
-      <!-- <input @input="month = $event.target.value" /> 
+      <!-- <input>에 사용자가 입력한 내용을 data(){} 안에 저장해야 함
+      <input @input="month = $event.target.value" /> 에서 $event.target.value를 하면 <input>에 입력한 값을 가져올 수 있음
       v-model은 '여기 입력된 값을 data로 바로 저장해달라'는 문법 -->
       <input v-model="month" />
       <p>{{ month }}개월 선택함: {{ products[isClicked].price * month }}원</p>
@@ -30,6 +31,7 @@ export default {
     // 특정 데이터가 변경될 때마다 실행되는 코드를 여기에 적을 수 있음
     month(notNumber) {
       // 함수명은 내가 감시하고 싶은 데이터명으로 작명해야 함
+      // month()는 month 데이터 감시자, 함수 안에 month가 변할 때마다 실행하고 싶은 코드를 적음
       if(isNaN(notNumber) == true) {
         // isNaN() 안에 숫자를 입력하면 false, 글자를 입력하면 true
         alert('문자 입력 금지');
