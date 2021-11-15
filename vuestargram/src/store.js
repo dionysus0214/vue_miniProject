@@ -41,3 +41,7 @@ export default store;
 
 // ajax은 actions에서
 // state 변경은 mutations에서
+
+// Vuex 쓰는 이유
+// 1. props, custom event로 데이터 주고 받기 힘들 때: js 파일 하나에 모든 데이터 저장 가능
+// 2. vue 파일과 데이터가 많을 때: 데이터 수정도 한 곳에서 가능

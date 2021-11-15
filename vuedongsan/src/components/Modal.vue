@@ -27,11 +27,12 @@ export default {
     }
   },
   watch: {
-    // 데이터 감시하려면 vatch: { 감시할데이터(){} }
+    // 데이터 감시하려면 watch: { 감시할데이터(){} }
     // 특정 데이터가 변경될 때마다 실행되는 코드를 여기에 적을 수 있음
     month(notNumber) {
       // 함수명은 내가 감시하고 싶은 데이터명으로 작명해야 함
-      // month()는 month 데이터 감시자, 함수 안에 month가 변할 때마다 실행하고 싶은 코드를 적음
+      // month()는 month 데이터 감시자, month 데이터 변할 때마다 watcher도 실행됨
+      // month(a, b)일 경우 a는 변경 후, b는 변경 전 데이터
       if(isNaN(notNumber) == true) {
         // isNaN() 안에 숫자를 입력하면 false, 글자를 입력하면 true
         alert('문자 입력 금지');
